@@ -1,0 +1,192 @@
+<%- include("./partials/header") -%>
+
+<div class="jumbotron text-center">
+  <h1><%= foundTicket.title %> <span class="h5 ml-5"><ion-icon name="pricetag"></ion-icon> <%= foundTicket.ticketNumber %></span></h1>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-2 text-center mt-5">
+    <form class="" action="/tickets/<%=foundTicket._id%>?_method=DELETE" method="post">
+      <button class="btn btn-outline-danger btn-lg" type="submit" name="button"><ion-icon name="trash"></ion-icon> Delete</button>
+      <input type="hidden" name="individual" value="<%=foundTicket.individual %>">
+    </form>
+  </div>
+  <div class="col-lg-2 text-center mt-5">
+    <button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal" data-target="#exampleModal"><ion-icon name="create"></ion-icon> Edit</button>
+  </div>
+</div>
+
+<br>
+<br>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="survey-form" class="form-group text-center" action="/tickets/<%=foundTicket._id%>?_method=PUT" method="post">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Ticket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+              <div class="form-row">
+                <input type="hidden" name="ticketNumber" value=<%= foundTicket.ticketNumber%>>
+                <div class="col col-2"></div>
+                <div class="col col-8">
+                  <label id="title-label">Title</label>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col col-2"></div>
+                <div class="col col-8">
+                  <input value="<%= foundTicket.title %>" name="title" type="text" class="form-control text-center" id="titleText" placeholder="Enter title/subject" required>
+                </div>
+              </div>
+              <br>
+              <div class="form-row justify-content-center">
+                <div class="col col-8">
+                  <label id="type-label">Status</label>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <select name="status" id="category-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                  <option selected value="<%= foundTicket.status %>"><%= foundTicket.status %></option>
+                  <option value="Open">Open</option>
+                  <option value="Resolved">Resolved</option>
+                  <option value="Hold">On Hold</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-row justify-content-center">
+                <div class="col col-8">
+                  <label id="type-label">Type</label>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <select name="type" id="category-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                  <option selected value="<%= foundTicket.type %>"><%= foundTicket.type %></option>
+                  <option value="Incident">Incident</option>
+                  <option value="Request">Request</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label id="type-label">Priority</label>
+                  </div>
+                </div>
+                <div class="form-row justify-content-center">
+                  <select name="priority" id="category-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                    <option selected value=<%= foundTicket.priority %>><%= foundTicket.priority %></option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                  </select>
+                </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label id="preference">Application/Service?</label>
+                  </div>
+                </div>
+                <div class="form-row justify-content-center">
+                  <select name="service" id="app-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                    <option selected value="<%= foundTicket.service %>"><%= foundTicket.service %></option>
+                    <option value="App1">App1</option>
+                    <option value="App2">App2</option>
+                    <option value="Full System">Full System</option>
+                    <option value="Search">Search</option>
+                    <option value="Reports">Reports</option>
+                    <option value="Reporting">Reporting</option>
+                    <option value="Outlook/Emails">Outlook/Emails</option>
+                    <option value="Excel">Excel</option>
+                    <option value="Word">Word</option>
+                    <option value="Internet">Internet</option>
+                    <option value="Website">Website</option>
+                    <option value="Webchat">Webchat</option>
+                    <option value="Intranet">Intranet</option>
+                    <option value="Sharepoint">Sharepoint</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Printers/Print Queues">Printers/Print Queues</option>
+                    <option value="Telephone System">Telephone System</option>
+                    <option value="Card Payments">Card Payments</option>
+                    <option value="Web Based">Web Based</option>
+                    <option value="Portal">Portal</option>
+                    <option value="Training">Training</option>
+                    <option value="System">System</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label id="preference">Assign Team</label>
+                  </div>
+                </div>
+                <div class="form-row justify-content-center">
+                  <select name="team" id="app-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                    <option selected value="<%= foundTicket.team %>"><%= foundTicket.team %></option>
+                    <option value="DBA">DBA</option>
+                    <option value="Development-Team1">Development 1</option>
+                    <option value="Development-Team2">Development 2</option>
+                    <option value="Development-Team3">Development 3</option>
+                    <option value="IT Helpdesk">IT Helpdesk</option>
+                  </select>
+                </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label id="preference">Assign Individual</label>
+                  </div>
+                </div>
+                <div class="form-row justify-content-center">
+                  <select name="individual" id="app-dropdown" class="custom-select col col-4 info" required aria-required="true">
+                    <option selected value="<%= foundTicket.individual %>"><%= foundTicket.individual %></option>
+                    <option value="Shane Joyce">Shane Joyce</option>
+                    <option value="John Doe">John Doe</option>
+                    <option value="Chris Smith">Chris Smith</option>
+                    <option value="Mike Riley">Mike Riley</option>
+                  </select>
+                </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label>Description - Please Provide As Much Detail As Possible</label>
+                  </div>
+                  <div class="col col-8">
+                    <textarea id="description" name="description" class="form-control" rows="10" required><%= foundTicket.description %></textarea>
+                  </div>
+                </div>
+                <br>
+                <div class="form-row justify-content-center">
+                  <div class="col col-8">
+                    <label>Action Taken</label>
+                  </div>
+                  <div class="col col-8">
+                    <textarea id="action" name="action" class="form-control" rows="10" required><%= foundTicket.action %></textarea>
+                  </div>
+                </div>
+                <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("./partials/footer") -%>

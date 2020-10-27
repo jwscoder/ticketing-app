@@ -1,0 +1,11 @@
+<%- include("./partials/header") -%>
+
+
+<h1><%= foundTicket.title %></h1>
+
+<form class="" action="/resolved/<%=foundTicket._id%>?_method=DELETE" method="post">
+  <button class="btn btn-outline-danger btn-lg" type="submit" name="button">Delete</button>
+</form>
+
+
+<%- include("./partials/footer") -%>

@@ -1,0 +1,81 @@
+<div class="container-fluid">
+
+<div class="row">
+
+  <div class="col-lg mt-3">
+      <div class="card-header border">
+        High
+          <span class="badge badge-primary float-right"><%= highPriority %></span>
+      </div>
+    <% foundItems.forEach(function(item){ %>
+      <%  if(item.priority < 4){ %>
+          <div class="card shadow bg-white rounded">
+            <div class="card-body">
+              <% if(item.type === "Incident"){ %>
+                  <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-danger mr-2" name="warning"></ion-icon> <%= item.title %></a>
+              <% } else { %>
+                  <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-success mr-2" name="help"></ion-icon> <%= item.title %></a>
+              <% } %>
+              <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="people"></ion-icon> <%= item.team %></p>
+              <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="person"></ion-icon> <%= item.individual %></p>
+              <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="timer"></ion-icon> Priority: <%= item.priority %></p>
+              <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="pricetag"></ion-icon> <%= item.ticketNumber %></p>
+            </div>
+          </div>
+        <% } %>
+    <%  }); %>
+  </div>
+
+  <div class="col-lg mt-3">
+      <div class="card-header border">
+        Medium
+        <span class="badge badge-primary float-right"><%= mediumPriority %></span>
+      </div>
+    <% foundItems.forEach(function(item){ %>
+      <% if(item.priority < 7 && item.priority > 3){ %>
+        <div class="card shadow bg-white rounded">
+          <div class="card-body">
+            <% if(item.type === "Incident"){ %>
+                <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-danger mr-2" name="warning"></ion-icon> <%= item.title %></a>
+            <% } else { %>
+                <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-success mr-2" name="help"></ion-icon> <%= item.title %></a>
+            <% } %>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="people"></ion-icon> <%= item.team %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="person"></ion-icon> <%= item.individual %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="timer"></ion-icon> Priority: <%= item.priority %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="pricetag"></ion-icon> <%= item.ticketNumber %></p>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+
+  <div class="col-lg mt-3">
+      <div class="card-header border">
+        Low
+        <span class="badge badge-primary float-right"><%= lowPriority %></span>
+      </div>
+    <% foundItems.forEach(function(item){ %>
+      <% if(item.priority >= 7){ %>
+        <div class="card shadow bg-white rounded">
+          <div class="card-body">
+          <% if(item.type === "Incident"){ %>
+              <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-danger mr-2" name="warning"></ion-icon> <%= item.title %></a>
+          <% } else { %>
+              <a class="card-title h6" href="/tickets/<%= item._id %>"><ion-icon class="text-success mr-2" name="help"></ion-icon> <%= item.title %></a>
+          <% } %>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="people"></ion-icon> <%= item.team %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="person"></ion-icon> <%= item.individual %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="timer"></ion-icon> Priority: <%= item.priority %></p>
+            <p class="card-text m-0"><ion-icon class="text-secondary mr-2" name="pricetag"></ion-icon> <%= item.ticketNumber %></p>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+</div>
+
+</div>
+
+<br>
+<br>
