@@ -32,7 +32,7 @@ UNCOMMENT THE CODE BELOW IN APP.JS
 //
 // const mike = new User({
 //   name: "Mike Riley",
-//   email: "marc@marc.com"
+//   email: "mike@mike.com"
 // });
 //
 // john.save();
