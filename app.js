@@ -3,10 +3,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
 const methodOverride = require("method-override");
-const fs = require("fs");
 const app = express();
 const nodemailer = require("nodemailer");
-const multer = require("multer");
+
 
 app.set("view engine", "ejs");
 
